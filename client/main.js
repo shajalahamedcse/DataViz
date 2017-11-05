@@ -1,6 +1,8 @@
 import { Template } from 'meteor/templating';
 import { HTTP } from 'meteor/http';
 
+//Web Server in Siemns S-7 1200 
+//io.html - main web page that gather data from plc tags
 url = 'http://192.168.0.1/awp/SFF%20PW%20Treatment%20Plant/io.html';
 
 
@@ -87,7 +89,9 @@ Template.Real.onRendered(function() {
     });
 
     yAxis.render();
+    
     var i = 0;
+    //Request to url after tv seconds .This request parse data using GET request .Then feeding it into variable to plot (Rickshaw.js)
     var iv = setInterval(function() {
 
         HTTP.call('GET', url, {}, function(error, response) {
